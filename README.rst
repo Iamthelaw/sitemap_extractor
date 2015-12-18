@@ -11,15 +11,18 @@ Feel free to write a codereview :)
 Usage:
 ------
 
+Import module
 .. code-block:: python
-    import sitemap_extractor as SE
+    >>> import sitemap_extractor
 
-    # init class
-    extractor = SE()
+Initialize class
+.. code-block:: python
+    >>> extractor = sitemap_extractor()
 
-    # get links
-    links = extractor.get_links("http://mysite.com")
+Grab links from desired domain
+.. code-block:: python
+    >>> links = extractor.get_links("http://mysite.com")
 
-    # optional - save result
-    extractor.save_to_file(links, "myfile.txt")
-
+Optional - save results to file
+.. code-block:: python
+    >>> extractor.save_to_file(links, "myfile.txt")
