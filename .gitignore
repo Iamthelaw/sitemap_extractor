@@ -60,4 +60,5 @@ target/
 
 *.pyc
 
+# PyCharm
 .idea/
