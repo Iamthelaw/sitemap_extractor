@@ -13,16 +13,14 @@ Usage:
 
 Import module
 .. code-block:: python
-    >>> import sitemap_extractor
 
-Initialize class
-.. code-block:: python
-    >>> extractor = sitemap_extractor()
+    import sitemap_extractor
 
-Grab links from desired domain
-.. code-block:: python
-    >>> links = extractor.get_links("http://mysite.com")
+    # class initialisation
+    extractor = sitemap_extractor()
 
-Optional - save results to file
-.. code-block:: python
-    >>> extractor.save_to_file(links, "myfile.txt")
+    # grab some links from desired domain
+    links = extractor.get_links("http://mysite.com")
+
+    # optional - saveresult to a file
+    extractor.save_to_file(links, "myfile.txt")
