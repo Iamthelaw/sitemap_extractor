@@ -61,26 +61,42 @@ def get_http_content(url):
 
 
 class Sitemap(object):
-    """
-    Class for OOP skills test
-    """
+    """Class for OOP skills test"""
 
     def __init__(self):
         pass
 
     @staticmethod
     def save_to_file(result, filename="sitemap.txt"):
+        """
+        SAve file with results to disk
+
+        :param result: generator object
+        :param filename: optional, name of a file
+        """
         with open(filename, 'w') as f:
-            f.write('\n'.join(result))
+            f.write('\n'.join(tuple(result)))
 
     @staticmethod
     def get_elements_from_xml(url):
+        """
+        Get xml elements from url if url is to xml file
+
+        :param url: string, like http://site.com
+        :return: xml elements that contains urls
+        """
         content = get_http_content(url)
         soup = BeautifulSoup(content, "html.parser")
         elements = soup.find_all("loc")
         return (_.text for _ in elements)
 
     def parse_xml(self, xml_elements):
+        """
+        Parse xml elements from get_elements_from_xml func
+
+        :param xml_elements: elements containing urls
+        :return: generator of urls
+        """
         for url in xml_elements:
             if ".xml" in url:
                 print("\x1b[32m✓\x1b[0m {}".format(url))
@@ -91,6 +107,12 @@ class Sitemap(object):
                 yield url
 
     def get_links(self, url):
+        """
+        Main loop. Takes domain url
+
+        :param url: domain url
+        :return: generator of site urls
+        """
         xml_elements = self.get_elements_from_xml(url + '/sitemap.xml')
         return self.parse_xml(xml_elements)
 
@@ -102,13 +124,12 @@ if __name__ == "__main__":
         Prompts user to save the result to a file
 
         :param result: result of program execution
-        :return: nothing
         """
         save_result = input("Save result to file?(y/n) ")
         if save_result in ("y", "Y"):
             filename = input("Name your file: ")
             with open(filename, "w") as f:
-                f.write("\n".join(result))
+                f.write("\n".join(tuple(result)))
 
     user_input = input("Domain for extraction ('http://site.com'):\n")
     extractor = Sitemap()
