@@ -12,15 +12,13 @@ Usage:
 ------
 
 Import module
-.. code-block:: python
+    >>> from sitemap_extractor import Sitemap()
 
-    import sitemap_extractor
+Class initialisation
+    >>> extractor = Sitemap()
 
-    # class initialisation
-    extractor = sitemap_extractor()
+Grab some links from desired domain
+    >>> links = extractor.get_links("http://mysite.com")
 
-    # grab some links from desired domain
-    links = extractor.get_links("http://mysite.com")
-
-    # optional - saveresult to a file
-    extractor.save_to_file(links, "myfile.txt")
+Optional - save result to a file
+    >>> extractor.save_to_file(links, "myfile.txt")
