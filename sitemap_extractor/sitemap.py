@@ -4,11 +4,17 @@
 """
 Module SitemapExtractor
 
-:author: robotehnik@me.com
+:copyright: robotehnik@me.com
+:license:
 """
 
 import requests
 from bs4 import BeautifulSoup
+
+# TODO:
+# - place get_xml_from_url outside main content
+# - recursive xml parsing is insecure, make limits
+# - grab_links needs refactoring
 
 
 class Sitemap(object):
